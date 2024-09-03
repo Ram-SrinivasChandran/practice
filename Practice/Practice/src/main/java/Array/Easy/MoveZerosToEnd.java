@@ -21,19 +21,17 @@ public class MoveZerosToEnd {
     }
 
     private static void moveZeroToEnd(int[] array, int arrayLength) {
+        int nonZeroIndex = 0;
         for (int i = 0; i < arrayLength; i++) {
-            if (array[i] == 0) {
-                for (int j = i; j < arrayLength - 1; j++) {
-                    if (array[j + 1] != 0) {
-                        array[i] = array[j + 1];
-                        array[j + 1] = 0;
-                        break;
-                    }
-
-                }
-
+            if (array[i] != 0) {
+                array[nonZeroIndex++] = array[i];
             }
 
+        }
+
+        while (nonZeroIndex < arrayLength) {
+            array[nonZeroIndex] = 0;
+            nonZeroIndex++;
         }
 
     }
