@@ -72,35 +72,45 @@ public class UnionOfSortedArray {
 
 /*
 
-Example 1:
-Input:
+Sample Input 1 :
+5 3
+1 2 3 4 6
+2 3 5
+Sample Output 1 :
+1 2 3 4 5 6
+Explanation Of Sample Input 1 :
+Input: ‘n’ = 5 ‘m’ = 3
+‘a’ = [1, 2, 3, 4, 6]
+‘b’ = [2, 3, 5]
 
-n = 5,m = 5.
-arr1[] = {1,2,3,4,5}
-arr2[] = {2,3,4,4,5}
-Output:
+Output: [1, 2, 3, 4, 5, 6]
 
- {1,2,3,4,5}
+Explanation: Common elements in ‘a’ and ‘b’ are: [2, 3]
+Distinct elements in ‘a’ are: [1, 4, 6]
+Distinct elements in ‘b’ are: [5]
+Union of ‘a’ and ‘b’ is: [1, 2, 3, 4, 5, 6]
+Sample Input 2:
+4 3
+1 2 3 3
+2 2 4
+Sample Output 2:
+1 2 3 4
+Explanation Of Sample Input 2 :
+Input: ‘n’ = 5 ‘m’ = 3
+‘a’ = [1, 2, 3, 3]
+‘b’ = [2, 2, 4]
 
-Explanation:
+Output: [1, 2, 3, 4]
 
-Common Elements in arr1 and arr2  are:  2,3,4,5
-Distnict Elements in arr1 are : 1
-Distnict Elemennts in arr2 are : No distinct elements.
-Union of arr1 and arr2 is {1,2,3,4,5}
+Explanation: Common elements in ‘a’ and ‘b’ are: [2]
+Distinct elements in ‘a’ are: [1, 3]
+Distinct elements in ‘b’ are: [4]
+Union of ‘a’ and ‘b’ is: [1, 2, 3, 4]
+Expected Time Complexity:
+O(( N + M )), where 'N' and ‘M’ are the sizes of Array ‘A’ and ‘B’.
+Constraints :
+1 <= 'n', 'm' <= 10^5
+-10^9 <= 'a'[i], 'b'[i] <= 10^9
 
-Example 2:
-Input:
-
-n = 10,m = 7.
-arr1[] = {1,2,3,4,5,6,7,8,9,10}
-arr2[] = {2,3,4,4,5,11,12}
-Output:
- {1,2,3,4,5,6,7,8,9,10,11,12}
-Explanation:
-
-Common Elements in arr1 and arr2  are:  2,3,4,5
-Distnict Elements in arr1 are : 1,6,7,8,9,10
-Distnict Elemennts in arr2 are : 11,12
-Union of arr1 and arr2 is {1,2,3,4,5,6,7,8,9,10,11,12}
+Time Limit: 1 sec
  */
