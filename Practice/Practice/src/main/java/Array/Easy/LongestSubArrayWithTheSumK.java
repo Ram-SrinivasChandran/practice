@@ -1,7 +1,5 @@
 package Array.Easy;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class LongestSubArrayWithTheSumK {
@@ -19,27 +17,57 @@ public class LongestSubArrayWithTheSumK {
     }
 
     private static int longestSubArrayWithSumK(int[] array, int k) {
-        int start = 0;
-        int end = 0;
-        int currentSum = 0;
-        int maxLength = 0;
-
-        while (end < array.length) {
-            currentSum += array[end];
-
-            while (currentSum > k && start <= end) {
-                currentSum -= array[start];
-                start++;
+        int longestSubArray = 0;
+        int count = 0;
+        boolean isEquals = false;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > k) {
+                continue;
+            } else if (array[i] == k) {
+                isEquals = true;
             }
 
-            if (currentSum == k) {
-                maxLength = Math.max(maxLength, end - start + 1);
+            int j = i + 1;
+            count = 1;
+            long sum = array[i];
+            int zeroCount = 0;
+            while (j < array.length) {
+                if (sum + array[j] < k) {
+                    sum += array[j];
+                    count++;
+                } else if (sum + array[j] == k) {
+                    count++;
+
+                    for (int l = j + 1; l < array.length ; l++) {
+                        if (array[l] == 0) {
+                            zeroCount++;
+                        } else {
+                            break;
+                        }
+
+                    }
+
+                    isEquals = true;
+                    break;
+                } else {
+                    break;
+                }
+
+                j++;
             }
 
-            end++;
+            count += zeroCount;
+
+            if (isEquals) {
+                if (count > longestSubArray) {
+                    longestSubArray = count;
+                }
+                isEquals=false;
+            }
+
         }
 
-        return maxLength;
+        return longestSubArray;
     }
 }
 
