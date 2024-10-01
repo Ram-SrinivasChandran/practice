@@ -1,0 +1,49 @@
+package BinarySearch.BinarySearchOn1DArray;
+
+import java.util.Scanner;
+
+public class SearchElementInARotatedSortedArrayDuplicate {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int arrayLength = scanner.nextInt();
+        int target = scanner.nextInt();
+        int[] array = new int[arrayLength];
+
+        for (int i = 0; i < arrayLength; i++) {
+            array[i] = scanner.nextInt();
+        }
+
+        System.out.println(search(array, arrayLength, target));
+    }
+
+    private static boolean search(int[] array, int arrayLength, int target) {
+        int result = binarySearchForRotatedSortedArray(array, target, 0, arrayLength - 1);
+        return result >= 0 && result < arrayLength && array[result] == target;
+    }
+
+    private static int binarySearchForRotatedSortedArray(int[] array, int target, int start, int end) {
+        if (start > end)
+            return start;
+
+        int mid = start + (end - start) / 2;
+
+        if (array[mid] == target) {
+            return mid;
+        } else if (array[mid] > array[start]) {
+            if (array[mid] >= target && array[start] <= target) {
+                return binarySearchForRotatedSortedArray(array, target, start, mid - 1);
+            } else {
+                return binarySearchForRotatedSortedArray(array, target, mid + 1, end);
+            }
+
+        } else {
+            if (array[mid] <= target && array[end] >= target) {
+                return binarySearchForRotatedSortedArray(array, target, mid + 1, end);
+            } else {
+                return binarySearchForRotatedSortedArray(array, target, start, mid - 1);
+            }
+
+        }
+
+    }
+}
