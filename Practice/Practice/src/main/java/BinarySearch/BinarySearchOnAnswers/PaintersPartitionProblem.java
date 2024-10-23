@@ -13,11 +13,22 @@ public class PaintersPartitionProblem {
             boards[i] = scanner.nextInt();
         }
 
+        System.out.println(findPainterPartition(boards, numberOfPainters));
+
     }
 
     private static int findPainterPartition(int[] boards, int numberOfPainters) {
+        int total = 0;
+        int max = Integer.MIN_VALUE;
+        for (int board : boards) {
+            total += board;
+            if (board > max) {
+                max = board;
+            }
 
-        return numberOfPainters;
+        }
+
+        return binarySearchForPainterPartition(boards, numberOfPainters, max, total);
     }
 
     private static int binarySearchForPainterPartition(int[] boards, int numberOfPainters, int start, int end) {
