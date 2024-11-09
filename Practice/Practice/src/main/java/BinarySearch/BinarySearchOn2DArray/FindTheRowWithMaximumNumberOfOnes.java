@@ -22,7 +22,7 @@ public class FindTheRowWithMaximumNumberOfOnes {
 
     private static int rowMaxOnes(int[][] numbers, int x, int y) {
         int max = 0;
-        int index = 0;
+        int index = -1;
 
         if (x == 0 && y == 0) {
             return -1;
